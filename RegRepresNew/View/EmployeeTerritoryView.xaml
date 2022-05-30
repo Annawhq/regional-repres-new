@@ -1,0 +1,50 @@
+﻿<Window x:Class="RegRepresNew.View.EmployeeTerritoryView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:RegRepresNew.View"
+        mc:Ignorable="d"
+        Title="Область сотрудника"         
+        Height="200" Width="400" 
+        WindowStartupLocation="CenterScreen" 
+        WindowStyle="ToolWindow">
+
+    <Grid>
+        <StackPanel Orientation="Vertical" VerticalAlignment="Center">
+        <TextBlock Margin="3" Text="Сотрудник:" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+            <ComboBox Margin="5" Height="25" 
+                  SelectedValue="{Binding Path=EmployeeId, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged }"
+                  SelectedValuePath="Id">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding Path=Lastname}" />
+                            <TextBlock Text="  " />
+                            <TextBlock Text="{Binding Path=Firstname}" />
+                        </StackPanel>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+            <TextBlock Margin="3" Text="Наименование области или края:" HorizontalAlignment="Left" VerticalAlignment="Center" />
+
+            <ComboBox Grid.Column="1" Margin="5" Height="25" 
+                  SelectedValue="{Binding Path=TerritoryId, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged }"
+                  SelectedValuePath="Id">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{Binding Path=Discription}" />
+                    </StackPanel>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+            <Button x:Name="btOK" Content="Подтвердить " Margin="5" Height="20" Click="btOK_Click" IsDefault="True" />
+            <Button x:Name="btConcel" Content="Отменить" Margin="5" Height="20" IsCancel="True" Click="btConcel_Click" />
+        </StackPanel>
+        </StackPanel>
+    </Grid>
+</Window>
+
